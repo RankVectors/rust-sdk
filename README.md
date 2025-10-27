@@ -29,7 +29,7 @@ Authorization: Bearer YOUR_API_KEY
 Get your API key from your RankVectors dashboard: Settings → API Keys
 
 
-For more information, please visit [https://docs.rankvectors.com](https://docs.rankvectors.com)
+For more information, please visit [https://rankvectors.com/docs](https://rankvectors.com/docs)
 
 ## Overview
 
@@ -127,5 +127,5 @@ cargo doc --open
 
 ## Author
 
-support@rankvectors.com
+tj@rankvectors.com
 
