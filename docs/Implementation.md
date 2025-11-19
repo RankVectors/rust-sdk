@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **status** | **String** | Implementation status | 
 **platform** | **String** | Platform used | 
 **implementation_method** | Option<**String**> | Implementation method | [optional]
-**credits_used** | **f64** | Credits consumed | 
+**credits_used** | Option<**f64**> | Credits consumed | [optional]
 **created_at** | **String** | Implementation start timestamp | 
 **completed_at** | Option<**String**> | Implementation completion timestamp | [optional]
 **metadata** | Option<[**std::collections::HashMap<String, serde_json::Value>**](serde_json::Value.md)> | Platform-specific metadata | [optional]

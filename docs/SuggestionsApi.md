@@ -1,13 +1,45 @@
-# com.rankvectors\SuggestionsApi
+# \SuggestionsApi
 
 All URIs are relative to *https://api.rankvectors.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**delete_suggestion**](SuggestionsApi.md#delete_suggestion) | **DELETE** /api/projects/{projectId}/suggestions/{suggestionId} | Delete suggestion
 [**generate_suggestions**](SuggestionsApi.md#generate_suggestions) | **POST** /api/projects/{projectId}/suggestions | Generate link suggestions
 [**get_suggestions**](SuggestionsApi.md#get_suggestions) | **GET** /api/projects/{projectId}/suggestions | Get link suggestions
 [**update_suggestion**](SuggestionsApi.md#update_suggestion) | **PATCH** /api/projects/{projectId}/suggestions/{suggestionId} | Update suggestion status
 
+
+
+## delete_suggestion
+
+> models::DeleteSuggestion200Response delete_suggestion(project_id, suggestion_id)
+Delete suggestion
+
+Delete a link suggestion
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**project_id** | **String** | Unique identifier for the project | [required] |
+**suggestion_id** | **String** | Unique identifier for the suggestion | [required] |
+
+### Return type
+
+[**models::DeleteSuggestion200Response**](deleteSuggestion_200_response.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 ## generate_suggestions

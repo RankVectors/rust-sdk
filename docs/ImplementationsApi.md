@@ -1,4 +1,4 @@
-# com.rankvectors\ImplementationsApi
+# \ImplementationsApi
 
 All URIs are relative to *https://api.rankvectors.com*
 
@@ -112,7 +112,7 @@ Name | Type | Description  | Required | Notes
 > models::RollbackImplementation200Response rollback_implementation(project_id, implementation_id, rollback_implementation_request)
 Rollback implementation
 
-Undo a link implementation and restore original content
+Undo a link implementation and restore original content.  Rollback is universally available for all platforms: - WordPress (via custom/webhook) - Shopify (direct API) - Vercel (via custom/webhook) - Webflow (via custom/webhook) - Contentful (via custom/webhook) - Custom (via webhook)  The rollback process restores the original content that was stored during implementation. 
 
 ### Parameters
 

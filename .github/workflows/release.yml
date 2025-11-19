@@ -1,0 +1,76 @@
+name: Rust SDK Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: .
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Test
+        run: cargo test
+
+      - name: Check formatting
+        run: cargo fmt -- --check
+
+      - name: Lint
+        run: cargo clippy -- -D warnings
+
+  publish:
+    needs: test
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: .
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Get version from tag
+        id: version
+        run: |
+          VERSION=${GITHUB_REF#refs/tags/v}
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Publishing version: $VERSION"
+
+      - name: Verify Cargo.toml version matches tag
+        run: |
+          TAG_VERSION="${{ steps.version.outputs.version }}"
+          CARGO_VERSION=$(grep -E '^version\s*=' Cargo.toml | sed 's/.*version\s*=\s*"\(.*\)".*/\1/' || echo "")
+          if [ -z "$CARGO_VERSION" ]; then
+            echo "⚠️ Warning: Could not determine version from Cargo.toml"
+          else
+            echo "Cargo.toml version: $CARGO_VERSION"
+            echo "Tag version: $TAG_VERSION"
+            if [ "$CARGO_VERSION" != "$TAG_VERSION" ]; then
+              echo "⚠️ Warning: Version mismatch between Cargo.toml and tag"
+            fi
+          fi
+
+      - name: Publish to crates.io
+        run: cargo publish
+        # With crates.io trusted publishing, no token is needed
+        # The workflow is automatically verified by crates.io
+
+      - name: Publish notice
+        run: |
+          echo "✅ Rust SDK release complete!"
+          echo ""
+          echo "Published version ${{ steps.version.outputs.version }} to crates.io"
+          echo ""
+          echo "Users can install with:"
+          echo "  cargo add rankvectors@${{ steps.version.outputs.version }}"

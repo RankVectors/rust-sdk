@@ -1,4 +1,4 @@
-# com.rankvectors\WebhooksApi
+# \WebhooksApi
 
 All URIs are relative to *https://api.rankvectors.com*
 

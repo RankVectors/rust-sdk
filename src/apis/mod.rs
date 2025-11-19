@@ -111,12 +111,15 @@ impl From<&str> for ContentType {
     }
 }
 
+pub mod api_keys_api;
+pub mod analytics_api;
 pub mod content_verification_api;
 pub mod crawling_api;
-pub mod credits_api;
 pub mod implementations_api;
+pub mod pages_api;
 pub mod projects_api;
 pub mod suggestions_api;
+pub mod user_api;
 pub mod webhooks_api;
 
 pub mod configuration;

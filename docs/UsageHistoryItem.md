@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** | Usage item identifier | 
 **action** | **String** | Action performed | 
-**credits_used** | **f64** | Credits used | 
+**pages_affected** | Option<**i32**> | Links/pages affected | [optional]
 **created_at** | **String** | Usage timestamp | 
 **metadata** | Option<[**std::collections::HashMap<String, serde_json::Value>**](serde_json::Value.md)> | Additional metadata | [optional]
 
